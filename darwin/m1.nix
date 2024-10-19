@@ -17,15 +17,21 @@
     ];
   };
 
-  nixpkgs.hostPlatform = "aarch64-darwin";
+
 
   homebrew = {
     enable = true;
     brews = [
+        "brave-browser@nightly"
     ];
     casks = [
+      "adobe-creative-cloud"
+      "docker"
+      "docker-toolbox"
+      "obsidian"
     ];
     masApps = {
+      "Xcode" = 497799835;
     };
   };
 

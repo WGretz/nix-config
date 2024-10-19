@@ -13,24 +13,21 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
-  let
+    let
       vars = {
         user = "will";
         location = "$HOME/.setup";
         terminal = "kitty";
         editor = "nvim";
       };
-  in
-  {
-    darwinConfigurations = (
-      import ./darwin {
+    in
+    {
+      darwinConfigurations = import ./darwin {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager nix-darwin vars;
-      }
-    );
-  };
+        inherit inputs nixpkgs nix-darwin home-manager vars;
+      };
+    };
 }
