@@ -24,7 +24,7 @@ in
     let
       inherit (systemConfig "aarch64-darwin") system pkgs;
     in
-    nix-darwin.lib.darwinSystem {
+    builtins.trace "system: ${system}" {
       inherit system;
       specialArgs = { inherit inputs system pkgs vars; };
       modules = [
