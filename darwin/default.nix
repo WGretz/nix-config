@@ -4,8 +4,8 @@
 #  flake.nix
 #   └─ ./darwin
 #       ├─ default.nix *
-#       ├─ darwin-configuraiton.nix
-#       └─ <host>.nix
+#       ├─ darwin-configuration.nix
+#       └─ <host>.nixx
 #
 
 { inputs, nixpkgs, nix-darwin, home-manager, vars, ... }:
@@ -20,21 +20,22 @@ let
   };
 in
 {
-  m1 =
-    let
-      inherit (systemConfig "aarch64-darwin") system pkgs;
-    in
-    builtins.trace "system: ${system}" {
-      inherit system;
-      specialArgs = { inherit inputs system pkgs vars; };
-      modules = [
-        ./darwin-configuration.nix
-        ./m1.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-        }
-      ];
-    };
+  m1 = nix-darwin.lib.darwinSystem {
+    system = "aarch64-darwin";
+    specialArgs = { inherit inputs nixpkgs vars; };
+    modules = [
+      ./darwin-configuration.nix
+      ./m1.nix
+      home-manager.darwinModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+      }
+      ({ pkgs, ... }: {
+        # Here you can add any system-wide configuration
+        # For example:
+        # environment.systemPackages = [ pkgs.vim ];
+      })
+    ];
+  };
 }

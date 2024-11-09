@@ -21,14 +21,12 @@
 
   homebrew = {
     enable = true;
-    brews = [
-        "brave-browser@nightly"
-    ];
     casks = [
       "adobe-creative-cloud"
       "docker"
       "docker-toolbox"
       "obsidian"
+      "keycastr"
     ];
     masApps = {
       "Xcode" = 497799835;

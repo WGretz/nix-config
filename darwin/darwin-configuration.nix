@@ -31,6 +31,10 @@
       ranger # File Manager
       tldr # Help
       zsh-powerlevel10k # Prompt
+      kitty
+      starship
+      devenv
+      direnv
     ];
   };
 
@@ -47,11 +51,11 @@
       "raycast"
       "stremio"
       "vlc"
+      "brave-browser@nightly"
       # "canon-eos-utility"
       # "jellyfin-media-player"
     ];
     masApps = {
-      "wireguard" = 1451685025;
     };
   };
 

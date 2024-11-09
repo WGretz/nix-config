@@ -13,9 +13,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew }:
     let
       vars = {
         user = "will";
@@ -29,5 +32,14 @@
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs nix-darwin home-manager vars;
       };
+
+      darwinModules = {
+        inherit (nix-homebrew) darwinModules;
+      };
+
+      darwinPackages = {
+        inherit (nix-homebrew) darwinPackages;
+      };
+
     };
 }
