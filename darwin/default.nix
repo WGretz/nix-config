@@ -38,4 +38,23 @@ in
       })
     ];
   };
+
+    m3 = nix-darwin.lib.darwinSystem {
+    system = "aarch64-darwin";
+    specialArgs = { inherit inputs nixpkgs vars; };
+    modules = [
+      ./darwin-configuration.nix
+      ./m3.nix
+      home-manager.darwinModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+      }
+      ({ pkgs, ... }: {
+        # Here you can add any system-wide configuration
+        # For example:
+        # environment.systemPackages = [ pkgs.vim ];
+      })
+    ];
+  };
 }

@@ -13,6 +13,9 @@
 
 {
   # imports = (import ./modules);
+  imports = (
+    import ../modules
+  );
 
   users.users.${vars.user} = {
     home = "/Users/${vars.user}";
@@ -35,6 +38,9 @@
       starship
       devenv
       direnv
+      neovim
+      tmux
+      lazygit
     ];
   };
 
@@ -47,15 +53,11 @@
       cleanup = "zap";
     };
     casks = [
-      "plex"
       "raycast"
-      "stremio"
-      "vlc"
       "brave-browser@nightly"
-      # "canon-eos-utility"
-      # "jellyfin-media-player"
     ];
     masApps = {
+      "Xcode" = 497799835;
     };
   };
 

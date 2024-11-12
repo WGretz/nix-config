@@ -22,13 +22,13 @@
   homebrew = {
     enable = true;
     casks = [
-      "adobe-creative-cloud"
+      # Would like to try to switch to podman.
       "docker"
       "docker-toolbox"
       "obsidian"
-      "keycastr"
     ];
     masApps = {
+      "Xcode" = 497799835;
     };
   };
 
