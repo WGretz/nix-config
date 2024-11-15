@@ -13,9 +13,9 @@
 
 {
   # imports = (import ./modules);
-  imports = (
-    import ../modules
-  );
+  imports = [
+    ../modules/zsh.nix
+  ];
 
   users.users.${vars.user} = {
     home = "/Users/${vars.user}";
@@ -41,6 +41,7 @@
       neovim
       tmux
       lazygit
+      zoxide
     ];
   };
 
@@ -63,6 +64,9 @@
 
   home-manager.users.${vars.user} = {
     home.stateVersion = "22.05";
+    home.packages = [
+      pkgs.zinit
+    ];
   };
 
   services.nix-daemon.enable = true;
