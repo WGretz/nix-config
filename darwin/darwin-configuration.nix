@@ -42,6 +42,7 @@
       tmux
       lazygit
       zoxide
+      fzf
     ];
   };
 
@@ -51,7 +52,7 @@
     enable = true;
     onActivation = {
       upgrade = false;
-      cleanup = "zap";
+      cleanup = "none";
     };
     casks = [
       "raycast"
@@ -82,6 +83,7 @@
       # auto-optimise-store = true
       experimental-features = nix-command flakes
     '';
+
   };
 
   system = {
